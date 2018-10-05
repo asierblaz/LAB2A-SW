@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="tipo_contenido" content="text/html;" http-equiv="content-type" charset="utf-8">
+	<title>Preguntas</title>
+    <link rel='stylesheet' type='text/css' href='estilos/style.css' />
+	<link rel='stylesheet' 
+		   type='text/css' 
+		   media='only screen and (min-width: 530px) and (min-device-width: 481px)'
+		   href='estilos/wide.css' />
+	<link rel='stylesheet' 
+		   type='text/css' 
+		   media='only screen and (max-width: 480px)'
+		   href='estilos/smartphone.css' />
+  </head>
+  <body>
+  <div id='page-wrap'>
+	<header class='main' id='h1'>
+		<span class="right"><a href="registro">Registrarse</a></span>
+      		<span class="right"><a href="login">Login</a></span>
+      		<span class="right" style="display:none;"><a href="/logout">Logout</a></span>
+		<h2>Quiz: el juego de las preguntas</h2>
+    </header>
+	<nav class='main' id='n1' role='navigation'>
+		<span><a href='layout.html'>Inicio</a></spam>
+		<span><a href='preguntas.html'>Insertar Pregunta</a></spam>
+		<span><a href='creditos.html'>Creditos</a></spam>
+	</nav>
+
+
+    <section class="main" id="s1">
+
+	<div>
+ <div style="text-align:left;"><strong>DATOS DE LAS PREGUNTAS</strong> </div> <br>
+
+<form id="formulario" style="background-color: white; text-align: left;">
+	Email*:<input type="text" name="email" id="email" class="entrada"><br>
+	Enunciado de la pregunta*: <input type="text" name="enunciado" id="enunciado" class="entrada"><br>
+	Respuesta Correcta*: <input type="text" name="respcorrecta" id="respcorrecta" class="entrada"><br>
+	Respuesta Incorrecta*: <input type="text" name="respincorrecta1" id="respincorrecta1" class="entrada"><br>
+	Respuesta Incorrecta*: <input type="text" name="respincorrecta2" id="respincorrecta2" class="entrada"><br>
+	Respuesta Incorrecta*: <input type="text" name="respincorrecta3" id="respincorrecta3" class="entrada"><br>
+	<br>
+	<hr>
+	<br>
+	Complejidad(0..5)*: <input type="text" name="complejidad" id="complejidad" class="entrada"><br>
+	Tema(subject)*: <input type="text" name="tema" id="tema" class="entrada"><br>
+	Imagen: <input id="imagen" type="file" name="imagen"><br> <br>
+<center> <input type="submit" id="enviar" value="Enviar Solicitud"></center> 
+
+</form>   
+
+
+	</div>
+
+    </section>
+	<footer class='main' id='f1'>
+		<a href='https://github.com/asierblaz/LAB2A-SW'>Link GITHUB</a>
+	</footer>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+<script>
+	$("#formulario").submit(function(){
+
+
+		if($("#enunciado").val().length < 10){
+			alert ("La pregunta tiene que tener al menos 10 caracteres");
+			return false;
+		}
+
+		if($("#email").val()==""){
+			alert("El email no es correcto");
+			return false;
+		}
+
+		if($("#respcorrecta").val()==""){
+
+			alert("Tienes que introducir una respuesta correcta");
+			return false;
+		}
+
+
+		if($("#respincorrecta1").val()==""||$("#respincorrecta2").val()==""||$("#respincorrecta3").val()=="" ){
+				
+				alert("Tienes que escribir tres respuestas incorrectas");
+				return false;
+			}
+
+
+
+
+
+	
+
+	})
+	
+</script>
+
+
+
+</body>
+</html>
