@@ -32,8 +32,10 @@
 
 	<div>
  <div style="text-align:left;"><strong>DATOS DE LAS PREGUNTAS</strong> </div> <br>
+	<fieldset>
 
-<form id="formulario" style="background-color: white; text-align: left;">
+
+<form id="fpreguntas" name="fpreguntas" action="prueba.php" style="background-color: white; text-align: left;">
 	Email*:<input type="text" name="email" id="email" class="entrada"><br>
 	Enunciado de la pregunta*: <input type="text" name="enunciado" id="enunciado" class="entrada"><br>
 	Respuesta Correcta*: <input type="text" name="respcorrecta" id="respcorrecta" class="entrada"><br>
@@ -43,12 +45,12 @@
 	<br>
 	<hr>
 	<br>
-	Complejidad(0..5)*: <input type="text" name="complejidad" id="complejidad" class="entrada"><br>
+	Complejidad(0..5)*: <input type="number" name="complejidad" id="complejidad" class="entrada"><br>
 	Tema(subject)*: <input type="text" name="tema" id="tema" class="entrada"><br>
 	Imagen: <input id="imagen" type="file" name="imagen"><br> <br>
 <center> <input type="submit" id="enviar" value="Enviar Solicitud"></center> 
 
-</form>   
+</form>   </fieldset>
 
 
 	</div>
@@ -58,20 +60,18 @@
 		<a href='https://github.com/asierblaz/LAB2A-SW'>Link GITHUB</a>
 	</footer>
 </div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 <script>
-	$("#formulario").submit(function(){
-
-
-		if($("#enunciado").val().length < 10){
-			alert ("La pregunta tiene que tener al menos 10 caracteres");
-			return false;
-		}
+	$("#fpreguntas").submit(function(){
 
 		if($("#email").val()==""){
 			alert("El email no es correcto");
+			return false;
+		}
+
+			if($("#enunciado").val().length < 10){
+			alert ("La pregunta tiene que tener al menos 10 caracteres");
 			return false;
 		}
 
@@ -88,17 +88,37 @@
 				return false;
 			}
 
+//complejidad
+			var numero =$("#complejidad").val();
+			if (numero!=""){
+			if( (numero>=0)&&(numero<=5)){ 
 
+				console.log("bien")
+					return true;
+			}
+			else{
+				 alert ("La complejidad solo pueden ser valores ente 0 y 5");
+				 return false
+				}
+			}
+			else {
 
+				alert("El campo de complejidad no puede estar vacio")
+				return false;
+			}
 
+	if($("#tema").val()==""){
+				
+				alert("Tienes que escribir un tema");
+				return false;
+			}
 
-	
 
 	})
-	
-</script>
 
-
+	</script>
+			
+			)
 
 </body>
 </html>
