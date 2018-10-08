@@ -12,6 +12,17 @@
 		   type='text/css' 
 		   media='only screen and (max-width: 480px)'
 		   href='estilos/smartphone.css' />
+
+
+	<style type="text/css">
+		
+		.entrada{
+			width: 500px;
+		}
+		#complejidad{
+			width: 50px;
+		}
+	</style>		   
   </head>
   <body>
   <div id='page-wrap'>
@@ -34,9 +45,8 @@
  <div style="text-align:left;"><strong>DATOS DE LAS PREGUNTAS</strong> </div> <br>
 	<fieldset>
 
-
 <form id="fpreguntas" name="fpreguntas" action="prueba.php" style="background-color: white; text-align: left;">
-	Email*:<input type="text" name="email" id="email" class="entrada"><br>
+	Email*:<input type="text" name="email" id="email" class="entrada" placeholder="email123@ikasle.ehu.eus"><br>
 	Enunciado de la pregunta*: <input type="text" name="enunciado" id="enunciado" class="entrada"><br>
 	Respuesta Correcta*: <input type="text" name="respcorrecta" id="respcorrecta" class="entrada"><br>
 	Respuesta Incorrecta*: <input type="text" name="respincorrecta1" id="respincorrecta1" class="entrada"><br>
@@ -48,12 +58,13 @@
 	Complejidad(0..5)*: <input type="number" name="complejidad" id="complejidad" class="entrada"><br>
 	Tema(subject)*: <input type="text" name="tema" id="tema" class="entrada"><br>
 	Imagen: <input id="imagen" type="file" name="imagen"><br> <br>
+	<br>
 <center> <input type="submit" id="enviar" value="Enviar Solicitud"></center> 
-
 </form>   </fieldset>
 
-
 	</div>
+
+	
 
     </section>
 	<footer class='main' id='f1'>
@@ -63,10 +74,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 <script>
-	$("#fpreguntas").submit(function(){
 
-		if($("#email").val()==""){
+var expresionemail = new RegExp(/^([a-zA-Z])+\d{3}\@ikasle.ehu\.(eus)/)
+
+	$("#fpreguntas").submit(function(){
+			
+
+		var email= $("#email").val();
+		console.log(email);
+		console.log(expresionemail.test(email));
+
+	if(expresionemail.test(email)==false){
+
 			alert("El email no es correcto");
+
 			return false;
 		}
 
@@ -80,6 +101,12 @@
 			alert("Tienes que introducir una respuesta correcta");
 			return false;
 		}
+
+		if($("#tema").val()==""){
+				
+				alert("Tienes que escribir un tema");
+				return false;
+			}
 
 
 		if($("#respincorrecta1").val()==""||$("#respincorrecta2").val()==""||$("#respincorrecta3").val()=="" ){
@@ -107,18 +134,21 @@
 				return false;
 			}
 
-	if($("#tema").val()==""){
-				
-				alert("Tienes que escribir un tema");
-				return false;
-			}
 
 
 	})
 
+	// boton de prueba
+ 
+
+
+
+
+
 	</script>
+
 			
-			)
+			
 
 </body>
 </html>
