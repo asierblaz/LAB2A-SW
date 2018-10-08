@@ -57,8 +57,9 @@
 	<br>
 	Complejidad(0..5)*: <input type="number" name="complejidad" id="complejidad" class="entrada"><br>
 	Tema(subject)*: <input type="text" name="tema" id="tema" class="entrada"><br>
-	Imagen: <input id="imagen" type="file" name="imagen"><br> <br>
-	<br>
+	Imagen: <input id="imagen" type="file" name="imagen" onchange="mostrarImagen()"><br> <br>
+	
+<center>	<img id="argazki" name="imagen"width="200"> </center> <br>
 <center> <input type="submit" id="enviar" value="Enviar Solicitud"></center> 
 </form>   </fieldset>
 
@@ -138,8 +139,22 @@ var expresionemail = new RegExp(/^([a-zA-Z])+\d{3}\@ikasle.ehu\.(eus)/)
 
 	})
 
-	// boton de prueba
- 
+//mostrar foto
+
+function mostrarImagen(){
+
+	 var preview= document.getElementById("argazki");
+	 var archivo = document.getElementById("imagen").files[0];
+
+	 var leer = new FileReader();
+
+	 if(archivo){
+	 	leer.readAsDataURL(archivo);
+	 	leer.onloadend=function(){
+	 		preview.src=leer.result;
+
+	 	};	 }
+} 
 
 
 
