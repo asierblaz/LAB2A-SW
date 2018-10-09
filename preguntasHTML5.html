@@ -55,7 +55,7 @@
 	<br>
 	<hr>
 	<br>
-	Complejidad(0..5)*: <input type="text" name="complejidad" id="complejidad" class="entrada"><br>
+	Complejidad(0..5)*: <input type="number" name="complejidad" id="complejidad" class="entrada"><br>
 	Tema(subject)*: <input type="text" name="tema" id="tema" class="entrada"><br>
 	Imagen: <input id="imagen" type="file" name="imagen" onchange="mostrarImagen()"><br> <br>
 	
@@ -143,10 +143,8 @@ var expresionemail = new RegExp(/^([a-zA-Z])+\d{3}\@ikasle.ehu\.(eus)/)
 
 function mostrarImagen(){
 
-
-				
-	 var preview=$("#argazki")[0];
-	 var archivo = $("#imagen")[0].files[0];
+	 var preview= document.getElementById("argazki");
+	 var archivo = document.getElementById("imagen").files[0];
 
 	 var leer = new FileReader();
 
