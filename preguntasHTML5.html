@@ -46,17 +46,17 @@
 	<fieldset>
 
 <form id="fpreguntas" name="fpreguntas" action="prueba.php" style="background-color: white; text-align: left;">
-	Email*:<input type="text" name="email" id="email" class="entrada" placeholder="email123@ikasle.ehu.eus"><br>
-	Enunciado de la pregunta*: <input type="text" name="enunciado" id="enunciado" class="entrada"><br>
-	Respuesta Correcta*: <input type="text" name="respcorrecta" id="respcorrecta" class="entrada"><br>
-	Respuesta Incorrecta*: <input type="text" name="respincorrecta1" id="respincorrecta1" class="entrada"><br>
-	Respuesta Incorrecta*: <input type="text" name="respincorrecta2" id="respincorrecta2" class="entrada"><br>
-	Respuesta Incorrecta*: <input type="text" name="respincorrecta3" id="respincorrecta3" class="entrada"><br>
+	Email*:<input type="text" name="email" id="email" class="entrada" placeholder="email123@ikasle.ehu.eus" required=""><br>
+	Enunciado de la pregunta*: <input type="text" name="enunciado" id="enunciado" class="entrada"required minlength="10"><br>
+	Respuesta Correcta*: <input type="text" name="respcorrecta" id="respcorrecta" class="entrada"required><br>
+	Respuesta Incorrecta*: <input type="text" name="respincorrecta1" id="respincorrecta1" class="entrada"required><br>
+	Respuesta Incorrecta*: <input type="text" name="respincorrecta2" id="respincorrecta2" class="entrada"required><br>
+	Respuesta Incorrecta*: <input type="text" name="respincorrecta3" id="respincorrecta3" class="entrada"required><br>
 	<br>
 	<hr>
 	<br>
-	Complejidad(0..5)*: <input type="number" name="complejidad" id="complejidad" class="entrada"><br>
-	Tema(subject)*: <input type="text" name="tema" id="tema" class="entrada"><br>
+	Complejidad(0..5)*: <input type="number" name="complejidad" id="complejidad" min="0" max="5" class="entrada "required><br>
+	Tema(subject)*: <input type="text" name="tema" id="tema" class="entrada"required><br>
 	Imagen: <input id="imagen" type="file" name="imagen" onchange="mostrarImagen()"><br> <br>
 	
 <center>	<img id="argazki" name="imagen"width="200"> </center> <br>
@@ -91,53 +91,7 @@ var expresionemail = new RegExp(/^([a-zA-Z])+\d{3}\@ikasle.ehu\.(eus)/)
 
 			return false;
 		}
-
-			if($("#enunciado").val().length < 10){
-			alert ("La pregunta tiene que tener al menos 10 caracteres");
-			return false;
-		}
-
-		if($("#respcorrecta").val()==""){
-
-			alert("Tienes que introducir una respuesta correcta");
-			return false;
-		}
-
-		if($("#tema").val()==""){
-				
-				alert("Tienes que escribir un tema");
-				return false;
-			}
-
-
-		if($("#respincorrecta1").val()==""||$("#respincorrecta2").val()==""||$("#respincorrecta3").val()=="" ){
-				
-				alert("Tienes que escribir tres respuestas incorrectas");
-				return false;
-			}
-
-//complejidad
-			var numero =$("#complejidad").val();
-			if (numero!=""){
-			if( (numero>=0)&&(numero<=5)){ 
-
-				console.log("bien")
-					return true;
-			}
-			else{
-				 alert ("La complejidad solo pueden ser valores ente 0 y 5");
-				 return false
-				}
-			}
-			else {
-
-				alert("El campo de complejidad no puede estar vacio")
-				return false;
-			}
-
-
-
-	})
+})
 
 //mostrar foto
 
