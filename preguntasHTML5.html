@@ -46,7 +46,7 @@
 	<fieldset>
 
 <form id="fpreguntas" name="fpreguntas" action="prueba.php" style="background-color: white; text-align: left;">
-	Email*:<input type="text" name="email" id="email" class="entrada" placeholder="email123@ikasle.ehu.eus" required=""><br>
+	Email*:<input type="text" name="email" id="email" class="entrada" placeholder="email123@ikasle.ehu.eus" required pattern="[a-z]{3,200}[0-9]{3}@ikasle.ehu+\.eus$"><br>
 	Enunciado de la pregunta*: <input type="text" name="enunciado" id="enunciado" class="entrada"required minlength="10"><br>
 	Respuesta Correcta*: <input type="text" name="respcorrecta" id="respcorrecta" class="entrada"required><br>
 	Respuesta Incorrecta*: <input type="text" name="respincorrecta1" id="respincorrecta1" class="entrada"required><br>
@@ -76,29 +76,14 @@
 
 <script>
 
-var expresionemail = new RegExp(/^([a-zA-Z])+\d{3}\@ikasle.ehu\.(eus)/)
-
-	$("#fpreguntas").submit(function(){
-			
-
-		var email= $("#email").val();
-		console.log(email);
-		console.log(expresionemail.test(email));
-
-	if(expresionemail.test(email)==false){
-
-			alert("El email no es correcto");
-
-			return false;
-		}
-})
-
 //mostrar foto
 
 function mostrarImagen(){
 
-	 var preview= document.getElementById("argazki");
-	 var archivo = document.getElementById("imagen").files[0];
+
+				
+	 var preview=$("#argazki")[0];
+	 var archivo = $("#imagen")[0].files[0];
 
 	 var leer = new FileReader();
 
